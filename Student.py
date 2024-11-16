@@ -66,7 +66,7 @@ class Student:
         school_combo.current(0)
         school_combo.grid(row=0, column=1, padx=1, pady=10, sticky=W) 
         
-        #program
+        #program label
         pgrm_label= Label(current_course_frame, text="Program", font=("georgia", 12, "bold"), bg= "white")
         pgrm_label.grid(row=0, column=2, padx=10, sticky=W)
 
