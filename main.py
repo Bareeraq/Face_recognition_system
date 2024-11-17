@@ -2,6 +2,8 @@ from tkinter import*
 from tkinter import ttk
 from PIL import Image, ImageTk
 from Student import Student
+from dotenv import load_dotenv
+load_dotenv()
 
 class Face_Recognition_System:
     def __init__(self, root):
