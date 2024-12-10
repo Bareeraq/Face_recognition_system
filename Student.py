@@ -21,6 +21,7 @@ class Student:
         self.var_year=StringVar()
         self.var_semester=StringVar()
         self.var_std_id=StringVar()
+        self.old_std_id = StringVar()
         self.var_std_name=StringVar()
         self.var_gpa=StringVar()
         self.var_gender=StringVar()
@@ -302,6 +303,7 @@ class Student:
         
         if data:  # Check if data is available
             self.var_std_id.set(data[0])
+            self.old_std_id.set(data[0])
             self.var_std_name.set(data[1])
             self.var_gender.set(data[2])
             self.var_dob.set(data[3])
@@ -429,7 +431,7 @@ class Student:
                                                                                                         self.var_address.get(),
                                                                                                         self.var_hosteler.get(),
                                                                                                         self.var_radio1.get(),
-                                                                                                        self.var_std_id.get()
+                                                                                                        self.old_std_id.get()
                                                                                                     ))    
                 else:
                     if not Update:
@@ -576,7 +578,7 @@ class Student:
                 messagebox.showinfo("Result", "Generating dataset completed!!!")
             except Exception as es:
                 messagebox.showerror("Error", f"Due to:{str(es)}", parent=self.root)
-
+    
 if __name__ == "__main__":
     root=Tk()
     obj= Student(root)

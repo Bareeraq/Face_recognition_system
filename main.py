@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 from Student import Student
 from dotenv import load_dotenv
 load_dotenv()
-
+import os
 class Face_Recognition_System:
     def __init__(self, root):
         self.root=root
@@ -12,7 +12,7 @@ class Face_Recognition_System:
         self.root.title("Face Recognition System")
 
         #bg img
-        img = Image.open(r"C:\Users\Dell\OneDrive\Desktop\Face_recognition_system\Project imgs\bgimg.png")
+        img = Image.open(r"Project imgs\bgimg.png")
         img = img.resize((1530,790), Image.LANCZOS)
         self.photoimg = ImageTk.PhotoImage(img)
 
@@ -23,7 +23,7 @@ class Face_Recognition_System:
         title_lbl.place(x=0, y=0, width= 1400, height= 45)
 
         # student button
-        img1 = Image.open(r"C:\Users\Dell\OneDrive\Desktop\Face_recognition_system\Project imgs\stu.png")
+        img1 = Image.open(r"Project imgs\stu.png")
         img1 = img1.resize((150,150), Image.LANCZOS)
         self.photoimg1 = ImageTk.PhotoImage(img1)
 
@@ -34,7 +34,7 @@ class Face_Recognition_System:
         b1_1.place(x=300, y=350, width= 150, height= 40)
 
         # face recognition button
-        img2 = Image.open(r"C:\Users\Dell\OneDrive\Desktop\Face_recognition_system\Project imgs\face1.png")
+        img2 = Image.open(r"Project imgs\face1.png")
         img2 = img2.resize((150,150), Image.LANCZOS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 
@@ -45,7 +45,7 @@ class Face_Recognition_System:
         b2_1.place(x=600, y=350, width= 150, height= 40)
 
         # Attendance button
-        img3 = Image.open(r"C:\Users\Dell\OneDrive\Desktop\Face_recognition_system\Project imgs\attendance1.png")
+        img3 = Image.open(r"Project imgs\attendance1.png")
         img3 = img3.resize((150,150), Image.LANCZOS)
         self.photoimg3 = ImageTk.PhotoImage(img3)
 
@@ -56,7 +56,7 @@ class Face_Recognition_System:
         b3_1.place(x=900, y=350, width= 150, height= 40)
 
         # Developer button
-        img4 = Image.open(r"C:\Users\Dell\OneDrive\Desktop\Face_recognition_system\Project imgs\dev.png")
+        img4 = Image.open(r"Project imgs\dev.png")
         img4 = img4.resize((150,150), Image.LANCZOS)
         self.photoimg4 = ImageTk.PhotoImage(img4)
 
@@ -66,19 +66,19 @@ class Face_Recognition_System:
         b4_1= Button(bg_img, text= "Developer", cursor= "hand2", font=("georgia", 13,"bold"), bg= "black", fg="white")
         b4_1.place(x=300, y=600, width= 150, height= 40)
 
-        # Help desk button
-        img5 = Image.open(r"C:\Users\Dell\OneDrive\Desktop\Face_recognition_system\Project imgs\help.png")
+        # Photos button
+        img5 = Image.open(r"Project imgs\help.png")
         img5 = img5.resize((150,150), Image.LANCZOS)
         self.photoimg5 = ImageTk.PhotoImage(img5)
 
-        b5= Button(bg_img, image= self.photoimg5, cursor= "hand2")
+        b5= Button(bg_img, image= self.photoimg5, cursor= "hand2", command=self.open_img)
         b5.place(x=600, y=450, width= 150, height= 150)
 
-        b5_1= Button(bg_img, text= "Help Desk", cursor= "hand2", font=("georgia", 13,"bold"), bg= "black", fg="white")
+        b5_1= Button(bg_img, text= "Photos", cursor= "hand2",command=self.open_img, font=("georgia", 13,"bold"), bg= "black", fg="white")
         b5_1.place(x=600, y=600, width= 150, height= 40)
 
         # Exit button
-        img6 = Image.open(r"C:\Users\Dell\OneDrive\Desktop\Face_recognition_system\Project imgs\exit1.png")
+        img6 = Image.open(r"Project imgs\exit1.png")
         img6 = img6.resize((150,150), Image.LANCZOS)
         self.photoimg6 = ImageTk.PhotoImage(img6)
 
@@ -87,6 +87,12 @@ class Face_Recognition_System:
 
         b6_1= Button(bg_img, text= "Exit", cursor= "hand2", font=("georgia", 13,"bold"), bg= "black", fg="white")
         b6_1.place(x=900, y=600, width= 150, height= 40)
+
+    def open_img(self):
+          os.startfile("data")
+
+
+
 
 #=================================FUNCTIONS BUTTON=================================================================================================================#
     def student_details(self):
