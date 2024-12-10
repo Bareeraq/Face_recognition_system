@@ -5,6 +5,9 @@ from Student import Student
 from dotenv import load_dotenv
 load_dotenv()
 import os
+from train import Train
+from face_recognition import Face_Recognition
+
 class Face_Recognition_System:
     def __init__(self, root):
         self.root=root
@@ -38,10 +41,10 @@ class Face_Recognition_System:
         img2 = img2.resize((150,150), Image.LANCZOS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 
-        b2= Button(bg_img, image= self.photoimg2, cursor= "hand2")
+        b2= Button(bg_img, image= self.photoimg2, cursor= "hand2", command=self.face_data)
         b2.place(x=600, y=200, width= 150, height= 150)
 
-        b2_1= Button(bg_img, text= "Face Detector", cursor= "hand2", font=("georgia", 13,"bold"), bg= "black", fg="white")
+        b2_1= Button(bg_img, text= "Face Detector", cursor= "hand2", command=self.face_data, font=("georgia", 13,"bold"), bg= "black", fg="white")
         b2_1.place(x=600, y=350, width= 150, height= 40)
 
         # Attendance button
@@ -55,15 +58,15 @@ class Face_Recognition_System:
         b3_1= Button(bg_img, text= "Attendance", cursor= "hand2", font=("georgia", 13,"bold"), bg= "black", fg="white")
         b3_1.place(x=900, y=350, width= 150, height= 40)
 
-        # Developer button
+        # Train face button
         img4 = Image.open(r"Project imgs\dev.png")
         img4 = img4.resize((150,150), Image.LANCZOS)
         self.photoimg4 = ImageTk.PhotoImage(img4)
 
-        b4= Button(bg_img, image= self.photoimg4, cursor= "hand2")
+        b4= Button(bg_img, image= self.photoimg4, cursor= "hand2", command=self.train_data)
         b4.place(x=300, y=450, width= 150, height= 150)
 
-        b4_1= Button(bg_img, text= "Developer", cursor= "hand2", font=("georgia", 13,"bold"), bg= "black", fg="white")
+        b4_1= Button(bg_img, text= "Train Data", cursor= "hand2", command=self.train_data, font=("georgia", 13,"bold"), bg= "black", fg="white")
         b4_1.place(x=300, y=600, width= 150, height= 40)
 
         # Photos button
@@ -92,12 +95,23 @@ class Face_Recognition_System:
           os.startfile("data")
 
 
-
-
 #=================================FUNCTIONS BUTTON=================================================================================================================#
     def student_details(self):
         self.new_window= Toplevel(self.root)
         self.app= Student(self.new_window)
+
+    def train_data(self):
+        self.new_window= Toplevel(self.root)
+        self.app= Train(self.new_window)
+
+    def face_data(self):
+        self.new_window= Toplevel(self.root)
+        self.app= Face_Recognition(self.new_window)
+
+
+
+
+
 
 if __name__ == "__main__":
             root = Tk()
