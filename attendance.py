@@ -146,8 +146,6 @@ class Attendance:
         self.AttendanceReportTable.column("Date", width=100)
         self.AttendanceReportTable.column("Time", width=100)
         self.AttendanceReportTable.column("Attendance", width=100)
-        
-
 
         self.AttendanceReportTable.pack(fill=BOTH, expand=1)
 
