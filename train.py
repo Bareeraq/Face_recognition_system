@@ -17,7 +17,7 @@ class Train:
         title_lbl = Label(self.root, text = "TRAIN DATASET", font=("georgia", 35,"bold"), bg= "black", fg="white")
         title_lbl.place(x=0, y=0, width= 1400, height= 45)
 
-        img_backgd = Image.open(r"Project imgs\train_data_bg.webp")
+        img_backgd = Image.open(r"Project imgs\2.jpg")
         img_backgd = img_backgd.resize((1400,705), Image.LANCZOS)
         self.photoimg_backgd = ImageTk.PhotoImage(img_backgd)
 

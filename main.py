@@ -15,7 +15,7 @@ class Face_Recognition_System:
         self.root.title("Face Recognition System")
 
         #bg img
-        img = Image.open(r"Project imgs\bgimg.png")
+        img = Image.open(r"Project imgs\2.jpg")
         img = img.resize((1530,790), Image.LANCZOS)
         self.photoimg = ImageTk.PhotoImage(img)
 

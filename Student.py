@@ -32,7 +32,7 @@ class Student:
         self.var_hosteler=StringVar()
 
         #bg img
-        img = Image.open(r"D:\Face_Recognition_System\Face-Recognition-Student-Attendance-System\Project imgs\bgimg.png")
+        img = Image.open(r"Project imgs\2.jpg")
         img = img.resize((1530,790), Image.LANCZOS)
         self.photoimg = ImageTk.PhotoImage(img)
 
@@ -218,7 +218,7 @@ class Student:
         Right_frame = LabelFrame(main_frame, bd=2, bg="white", relief=RIDGE, text="Student Details", font = ("georgia", 14, "bold"))
         Right_frame.place(x=660, y=10, width=645, height=640)
 
-        img_right = Image.open(r"C:\Users\Dell\OneDrive\Desktop\Face_recognition_system\Project imgs\std_details_icon.png")
+        img_right = Image.open(r"Project imgs\std_details_icon.png")
         img_right = img_right.resize((634,140), Image.LANCZOS)
         self.photoimg_right = ImageTk.PhotoImage(img_right)
         bg_img1 = Label(Right_frame, image = self.photoimg_right)
