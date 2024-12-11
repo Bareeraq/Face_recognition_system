@@ -46,8 +46,7 @@ class Face_Recognition:
                 now= datetime.now()
                 d1= now.strftime("%d/%m/%Y")
                 dtString= now.strftime("%H:%M:%S")
-                f.writelines(f"\n{i},{n},{p},{s},{dtString},{d1},Present")
-                
+                f.writelines(f"\n{i},{n},{p},{s},{dtString},{d1},Present")    
 
     #====================Face Recognition===================================
     def face_recog(self):
