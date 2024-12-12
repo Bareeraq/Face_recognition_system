@@ -255,11 +255,12 @@ class Attendance:
 
     def update_data(self):
         try:
-            selected_item = self.AttendanceReportTable.selection()
+            selected_item = self.AttendanceReportTable.selection()  # Get the selected row
             if not selected_item:
                 messagebox.showerror("Error", "No record selected to update", parent=self.root)
                 return
 
+            # Get the current row data from the selection
             selected = self.AttendanceReportTable.item(selected_item)
             values = selected['values']
 
@@ -267,7 +268,7 @@ class Attendance:
                 messagebox.showerror("Error", "No valid data selected to update", parent=self.root)
                 return
 
-            # Update the values
+            # Collect updated values from the form fields
             updated_values = (
                 self.var_sno.get(),
                 self.var_std_id.get(),
@@ -279,36 +280,23 @@ class Attendance:
                 self.var_atten_attendance.get()
             )
 
-            # Ensure the updated values are valid
-            if "" in updated_values or "Status" in updated_values:
-                messagebox.showerror("Error", "Please fill all fields correctly", parent=self.root)
+            # Ensure no field is empty
+            if "" in updated_values or updated_values[7] == "Status":
+                messagebox.showerror("Error", "All fields are required, including a valid attendance status.", parent=self.root)
                 return
 
-            # Check for ID uniqueness in the Treeview
-            for child in self.AttendanceReportTable.get_children():
-                if (
-                    self.AttendanceReportTable.item(child)["values"][1] == self.var_std_id.get() and
-                    child != selected_item[0]
-                ):
-                    messagebox.showerror("Error", f"ID {self.var_std_id.get()} already exists", parent=self.root)
-                    return
-
-            # Update the Treeview with new values
+            # Update the selected row in Treeview
             self.AttendanceReportTable.item(selected_item, values=updated_values)
+
+            # Update the corresponding entry in `mydata`
+            row_index = int(values[0]) - 1  # S.No is 1-based; adjust for 0-based index
+            if 0 <= row_index < len(mydata):
+                mydata[row_index] = updated_values[1:]  # Exclude S.No for `mydata`
+
             messagebox.showinfo("Success", "Record updated successfully", parent=self.root)
 
-            # Update backend data (mydata) based on unique Student ID
-            for i in range(len(mydata)):
-                if mydata[i][1] == values[1]:  # Match based on Student ID (unique identifier)
-                    mydata[i] = updated_values
-                    break
-
-            # After updating the Treeview and mydata, export the updated data to CSV
-            self.exportCsv()
-
-        except Exception as ex:
-            messagebox.showerror("Error", f"An error occurred: {str(ex)}", parent=self.root)
-
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred while updating the data: {e}", parent=self.root)
 
 if __name__ == "__main__":
     root=Tk()

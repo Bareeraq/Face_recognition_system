@@ -36,17 +36,18 @@ class Face_Recognition:
 
     #=====================Attendance=====================================
     def mark_attendance(self, i, n, p, s):
-        with open("bareera.csv", "r+", newline="\n") as f:
-            myDataList = f.readlines()
-            name_list=[]
-            for line in myDataList:
-                entry= line.split((","))  #bareera,2,B.tech,SCSE
-                name_list.append(entry[0])
-            if((i not in name_list) and (n not in name_list) and (p not in name_list) and (s not in name_list)):
-                now= datetime.now()
-                d1= now.strftime("%d/%m/%Y")
-                dtString= now.strftime("%H:%M:%S")
-                f.writelines(f"\n{i},{n},{p},{s},{dtString},{d1},Present")    
+        try:
+            with open("bareera.csv", "a+", newline="\n") as f:
+                myDataList = f.readlines()
+                name_list = [line.split(",")[0] for line in myDataList]
+                if i not in name_list:
+                    now = datetime.now()
+                    dtString = now.strftime("%H:%M:%S")
+                    d1 = now.strftime("%d/%m/%Y")
+                    f.writelines(f"\n{i},{n},{p},{s},{dtString},{d1},Present")
+        except Exception as e:
+            print(f"Error marking attendance: {e}")
+  
 
     #====================Face Recognition===================================
     def face_recog(self):
