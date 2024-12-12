@@ -1,13 +1,13 @@
 from tkinter import*
 from tkinter import ttk
 from PIL import Image, ImageTk
-from Student import Student
-from dotenv import load_dotenv
-load_dotenv()
 import os
+from Student import Student
 from train import Train
 from face_recognition import Face_Recognition
 from attendance import Attendance
+from dotenv import load_dotenv
+load_dotenv()
 
 class Face_Recognition_System:
     def __init__(self, root):
