@@ -71,7 +71,7 @@ class Face_Recognition_System:
         b4_1.place(x=300, y=600, width= 150, height= 40)
 
         # Photos button
-        img5 = Image.open(r"Project imgs\help.png")
+        img5 = Image.open(r"Project imgs\photos.png")
         img5 = img5.resize((150,150), Image.LANCZOS)
         self.photoimg5 = ImageTk.PhotoImage(img5)
 
