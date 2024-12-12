@@ -1,12 +1,17 @@
 from tkinter import*
 from tkinter import ttk
+import tkinter.messagebox
 from PIL import Image, ImageTk
+import tkinter
 import os
+from time import strftime
+from datetime import datetime
 from Student import Student
 from train import Train
 from face_recognition import Face_Recognition
 from attendance import Attendance
 from dotenv import load_dotenv
+
 load_dotenv()
 
 class Face_Recognition_System:
@@ -14,6 +19,8 @@ class Face_Recognition_System:
         self.root=root
         self.root.geometry("1530x790+0+0")
         self.root.title("Face Recognition System")
+        
+        print("Access granted. Starting the attendance system...")
 
         #bg img
         img = Image.open(r"Project imgs\2.jpg")
@@ -25,6 +32,16 @@ class Face_Recognition_System:
         
         title_lbl = Label(bg_img, text = "FACE RECOGNITION ATTENDANCE SYSTEM", font=("georgia", 35,"bold"), bg= "black", fg="white")
         title_lbl.place(x=0, y=0, width= 1400, height= 45)
+
+        #=================time=================
+        def time():
+            string = strftime('%H:%M:%S %p')
+            lbl.config(text = string)
+            lbl.after(1000, time)
+        
+        lbl=Label(title_lbl, font=('times new roman', 14, 'bold'), background='black', foreground='white')
+        lbl.place(x=0, y=0, width=110, height=50)
+        time()
 
         # student button
         img1 = Image.open(r"Project imgs\stu.png")
@@ -86,10 +103,10 @@ class Face_Recognition_System:
         img6 = img6.resize((150,150), Image.LANCZOS)
         self.photoimg6 = ImageTk.PhotoImage(img6)
 
-        b6= Button(bg_img, image= self.photoimg6, cursor= "hand2")
+        b6= Button(bg_img, image= self.photoimg6, cursor= "hand2", command=self.exit_func)
         b6.place(x=900, y=450, width= 150, height= 150)
 
-        b6_1= Button(bg_img, text= "Exit", cursor= "hand2", font=("georgia", 13,"bold"), bg= "black", fg="white")
+        b6_1= Button(bg_img, text= "Exit", cursor= "hand2", command=self.exit_func, font=("georgia", 13,"bold"), bg= "black", fg="white")
         b6_1.place(x=900, y=600, width= 150, height= 40)
 
     def open_img(self):
@@ -113,11 +130,14 @@ class Face_Recognition_System:
         self.new_window= Toplevel(self.root)
         self.app= Attendance(self.new_window)
 
-    
+    def exit_func(self):
+        self.exit_func= tkinter.messagebox.askyesno("Face Recognition", "Are you sure you want to exit Face Recognition system?", parent= self.root)
 
-
-
-
+        if self.exit_func > 0:
+             self.root.destroy()
+        else:
+            return
+             
 if __name__ == "__main__":
             root = Tk()
             obj = Face_Recognition_System(root)
