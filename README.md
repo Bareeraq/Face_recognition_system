@@ -9,7 +9,5 @@ Advance Face Recognition Student Attendance System Project in Python OpenCV With
    - i) Student management system (Save, Take Photo Samples, Update, Delete, Clear)  
    - ii) Train Photo Samples  
    - iii) Take Attendance with Face Detection  
-   - iv) Attendance Report (Excel file & MySQL database)  
-   - v) Developer Page  
-   - vi) Help Desk  
-   - vii) Exit System
+   - iv) Attendance Report (Excel file & MySQL database)   
+   - v) Exit System
