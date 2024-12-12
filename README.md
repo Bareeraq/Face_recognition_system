@@ -2,7 +2,7 @@
 
 Advance Face Recognition Student Attendance System Project in Python OpenCV With Tkinter GUI & Mysql Database
 
-### Features of Project:
+## Features of Project:
 1. Real-time face detection  
 2. Logging Security System (Username & Password)  
 3. Home Page:  
@@ -11,3 +11,6 @@ Advance Face Recognition Student Attendance System Project in Python OpenCV With
    - iii) Take Attendance with Face Detection  
    - iv) Attendance Report (Excel file & MySQL database)   
    - v) Exit System
+## References:
+Face Recognition: Understanding LBPH Algorithm:
+https://towardsdatascience.com/face-recognition-how-lbph-works-90ec258c3d6b
