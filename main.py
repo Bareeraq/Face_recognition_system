@@ -7,6 +7,7 @@ load_dotenv()
 import os
 from train import Train
 from face_recognition import Face_Recognition
+from attendance import Attendance
 
 class Face_Recognition_System:
     def __init__(self, root):
@@ -52,10 +53,10 @@ class Face_Recognition_System:
         img3 = img3.resize((150,150), Image.LANCZOS)
         self.photoimg3 = ImageTk.PhotoImage(img3)
 
-        b3= Button(bg_img, image= self.photoimg3, cursor= "hand2")
+        b3= Button(bg_img, image= self.photoimg3, cursor= "hand2", command= self.attendance_data)
         b3.place(x=900, y=200, width= 150, height= 150)
 
-        b3_1= Button(bg_img, text= "Attendance", cursor= "hand2", font=("georgia", 13,"bold"), bg= "black", fg="white")
+        b3_1= Button(bg_img, text= "Attendance", cursor= "hand2", command= self.attendance_data, font=("georgia", 13,"bold"), bg= "black", fg="white")
         b3_1.place(x=900, y=350, width= 150, height= 40)
 
         # Train face button
@@ -107,8 +108,12 @@ class Face_Recognition_System:
     def face_data(self):
         self.new_window= Toplevel(self.root)
         self.app= Face_Recognition(self.new_window)
+    
+    def attendance_data(self):
+        self.new_window= Toplevel(self.root)
+        self.app= Attendance(self.new_window)
 
-
+    
 
 
 
